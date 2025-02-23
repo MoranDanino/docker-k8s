@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: snowflake
+  namespace: development
+  labels:
+    app: snowflake
+spec:
+  containers:
+    - name: snowflake
+      image: hashicorp/http-echo
+      args:
+        - "-text=Hello from Snowflake"
+      ports:
+        - containerPort: 5678
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snowflake
+  namespace: development
+spec:
+  selector:
+    app: snowflake
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5678
+  type: ClusterIP

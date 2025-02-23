@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cattle
+  namespace: development
+  labels:
+    app: cattle
+spec:
+  containers:
+    - name: cattle
+      image: hashicorp/http-echo
+      args:
+        - "-text=Hello from Cattle"
+      ports:
+        - containerPort: 5678
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cattle
+  namespace: development
+spec:
+  selector:
+    app: cattle
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5678
+  type: ClusterIP
