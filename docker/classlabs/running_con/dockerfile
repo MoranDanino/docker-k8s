@@ -1,0 +1,5 @@
+# Use the official Alpine Linux image as a base
+FROM alpine:latest
+ENV MESSAGE="Hello, Dockerfile!"
+CMD echo $MESSAGE
+
