@@ -3,23 +3,24 @@ services:
     container_name: postgres
     image: postgres:latest
     environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PW}
-      - POSTGRES_DB=${POSTGRES_DB} #optional (specify default database instead of $POSTGRES_DB)
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydatabase
     ports:
       - "5432:5432"
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
   web:
     container_name: flask
     depends_on:
       - postgres
     build: .
     ports:
-    - "5000:5000"
+      - "5005:5000"  
     environment:
-      DATABASE_URL: DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PW}@postgres:5432/${POSTGRES_DB}
+      - DATABASE_URL=postgresql://myuser:mypassword@postgres:5432/mydatabase
 
 volumes:
   postgres_data:
