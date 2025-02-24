@@ -1,0 +1,3 @@
+GITBRANCH=master
+GITURL=github.com/MoranDanino/docker-k8s.git
+GITUSERNAME=MoranDanino
