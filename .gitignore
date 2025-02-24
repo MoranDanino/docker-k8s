@@ -5,3 +5,5 @@
 # Other ignore rules (example)
 node_modules/
 *.log
+
+venv/
