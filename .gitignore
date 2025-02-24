@@ -1,6 +1,6 @@
 # Ignore everything in lab2 directory
-!lab2/
-!lab2/**
+!lab02/
+!lab02/**
 
 # Other ignore rules (example)
 node_modules/
